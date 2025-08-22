@@ -1,4 +1,4 @@
-version: 0.2
+version: 0.2 
 
 
 phases: 
@@ -11,9 +11,9 @@ commands:
 build: 
 commands: 
 - echo Building Next.js app... 
-- npm run build 
-- npm run export    
+- npm run build - npm run export    
 artifacts: 
 base-directory: out    
 files: 
 - '**/*'
+base-directory: build
