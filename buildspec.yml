@@ -3,9 +3,15 @@ phases:
 install: 
 runtime-versions: 
 nodejs: 18 
-commands: - echo Installing dependencies... - npm install 
+commands: 
+- echo Installing dependencies... 
+- npm install 
 build: 
-commands: - echo Building Next.js app... - npm run build - npm run export    
+commands: 
+- echo Building Next.js app... 
+- npm run build 
+- npm run export    
 artifacts: 
 base-directory: out    
-files: - '**/*'
+files: 
+- '**/*'
