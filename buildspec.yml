@@ -2,15 +2,21 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      nodejs: 18
     commands:
+      -cd project
       - npm install
   build:
     commands:
+      - cd project
       - npm run export
-      - echo "Checking out directory contents..."
+  build:
+    commands:
+      - npm run export || echo "EXPORT FAILED"
+      - echo "Listing files..."
       - ls -la
-      - ls -la out || echo "No out folder found"
-artifacts:
-  base-directory: out
-  files:
-    - '**/*'
+  artifacts:
+    base-directory: project/out
+    files:
+     - '**/*'
