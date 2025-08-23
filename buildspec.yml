@@ -3,13 +3,27 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 18
+      nodejs: 20
     commands:
-      - npm install
+      - echo Installing dependencies...
+      - npm ci || npm install
+
   build:
     commands:
-      - npm run export
+      - echo Building project...
+      # Try build, if it fails, fall back to export
+      - npm run build || npm run export
+
+  post_build:
+    commands:
+      - echo "Checking output folder..."
+      # If build/ exists, use it; otherwise use out/
+      - if [ -d build ]; then echo "Using build/"; TARGET=build; elif [ -d out ]; then echo "Using out/"; TARGET=out; else echo "No output folder found!" && exit 1; fi
+      - ls -la $TARGET/
+      - echo "Deploying to S3..."
+      - aws s3 sync $TARGET/ s3://health-wellbeing-website-133/ --delete --region ap-south-1
+
 artifacts:
-  base-directory: out
   files:
     - '**/*'
+  base-directory: build
