@@ -8,9 +8,9 @@ phases:
       - npm install
   build:
     commands:
-      - npm run export
+      - npm run build   # ✅ no need for export if output: 'export'
 
 artifacts:
   base-directory: out
   files:
-  - '**/*'
+    - '**/*'
