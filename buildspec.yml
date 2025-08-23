@@ -7,16 +7,13 @@ phases:
     commands:
       -cd project
       - npm install
+      
   build:
     commands:
       - cd project
       - npm run export
-  build:
-    commands:
-      - npm run export || echo "EXPORT FAILED"
-      - echo "Listing files..."
-      - ls -la
-  artifacts:
-    base-directory: project/out
-    files:
-     - '**/*'
+
+artifacts:
+  base-directory: project/out
+  files:
+   - '**/*'
