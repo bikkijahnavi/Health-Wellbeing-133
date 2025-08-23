@@ -5,9 +5,9 @@ phases:
     runtime-versions:
       nodejs: 18
     commands:
-      -cd project
+      - cd project
       - npm install
-      
+
   build:
     commands:
       - cd project
