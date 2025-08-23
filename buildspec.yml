@@ -7,6 +7,9 @@ phases:
   build:
     commands:
       - npm run export
+      - echo "Checking out directory contents..."
+      - ls -la
+      - ls -la out || echo "No out folder found"
 artifacts:
   base-directory: out
   files:
