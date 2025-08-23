@@ -5,15 +5,12 @@ phases:
     runtime-versions:
       nodejs: 18
     commands:
-      - cd project-bolt-sb1-hzpzecgy
       - npm install
-
   build:
     commands:
-      - cd project-bolt-sb1-hzpzecgy
       - npm run export
 
 artifacts:
-  base-directory: project-bolt-sb1-hzpzecgy/out
+  base-directory: out
   files:
-   - '**/*'
+  - '**/*'
